@@ -21,3 +21,7 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Ignorar archivos de configuración de Firebase
+backend/src/config/firebase.js
+backend/src/config/tareas-firebase-adminsdk.json

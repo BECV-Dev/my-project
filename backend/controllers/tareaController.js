@@ -24,3 +24,19 @@ exports.getTarea = async (req, res) => {
   }
 };
 
+// Actualizar Tarea
+exports.updateTarea = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { titulo, descripcion } = req.body;
+    const docRef = db.collection('tareas').doc(id);
+    await docRef.update({
+      titulo: titulo,
+      descripcion: descripcion,
+      timestamp: admin.firestore.FieldValue.serverTimestamp()
+    });
+    res.send({ success: true });
+  } catch (error) {
+    res.status(500).send({ error: 'Error actualizando tarea' });
+  }
+};
